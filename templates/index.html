@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вітальня</title>
+</head>
+<body>
+<h1>Привітаємося?</h1>
+<form method="post" action="/add_user">
+    <label title="Введіть імʼя">
+        Введіть імʼя:
+        <input type="text" name="name">
+    </label>
+    <button type="submit">Привітатись</button>
+</form>
+  {% if user %}
+      <h2>{{ status }}, {{ user }}</h2>
+  {% endif %}
+<p>Знайомі користувачі за посиланням <a href="{{ url_for('users') }}">тиць</a>.</p>
+</body>
+</html>

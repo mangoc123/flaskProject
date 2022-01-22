@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Привітні користувачі</title>
+</head>
+<body>
+<h1>Користувачі яких я вже привітав</h1>
+{% for user in users %}
+    <div>З користувачем {{ user.name }}, привіталися о {{ (user.time_created).strftime("%H:%M:%S %d-%m-%Y") }}</div>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "changeme"
+    ports:
+      - "5432:5432"
+
+  adminer:
+    container_name: pgadminer
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+
+  app:
+    container_name: app
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - .:/src
+    command: python app.py
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ".env"
