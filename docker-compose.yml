@@ -19,7 +19,7 @@ services:
     restart: always
     ports:
       - "8080:8080"
-
+  
 
   app:
     container_name: app
@@ -34,3 +34,13 @@ services:
       - "5000:5000"
     env_file:
       - ".env"
+    network_mode: host
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    enviroment:
+      - SERVER_NAME=0.0.0.0
+    restart: always
+    network_mode: host
+    
